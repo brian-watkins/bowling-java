@@ -39,13 +39,9 @@ class ScoreCalculatorTest {
     }
 
     @Test
-    public void whenThereIsAStrikeOnTheSecondRoll_itAddsPinsFromTheNextFrame() {
-        subject.roll(0);
-        subject.roll(10);
-        subject.roll(4);
-        subject.roll(2);
-        int remaining = rollRandom(16);
-        assertEquals(remaining + 16 + 6, subject.score());
+    public void whenThereAreAllStrikes_theScoreIs300() {
+        rollMany(12, 10);
+        assertEquals(300, subject.score());
     }
 
     private void rollMany(int times, int pins) {
